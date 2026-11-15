@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>EST/UTC-5</title>
+	<style>
+		body {
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			transition: background-color 3600s ;
+		}
+		#container {
+			width: auto;
+            aspect-ratio: 1/1;
+			height: 125px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+			border-radius: 50%;
+		}
+		.hand{
+			width: 2px;
+			position: absolute;
+		}
+		.second {
+			height: 80vh;
+		}
+		.minute {
+			height: 70vh;
+		}
+		.hour {
+			height: 60vh;
+		}
+
+        #divider {
+            position: absolute;
+			font-family: Helvetica, sans-serif;
+			font-style: bold;
+			font-size: 25px;
+			width: auto;
+            aspect-ratio: 1/1;
+			height: 50vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+			border-radius: 50%;
+            z-index: 1;
+		}
+        .clock:hover{
+			transition: transform 0.3s ease;
+			transform: scale(1.2);
+
+        }
+	</style>
+</head>
+<body>
+	<div id="container">
+
+		<div class="second hand">
+		</div>
+		<div class="minute hand">
+		</div>
+		<div class="hour hand">
+		</div>
+
+	</div>
+    <div id="divider">
+        <div id="clock"></div>
+
+    </div>
+
+
+	</div>
+	<script>
+  const secondhand = document.querySelector(".second");
+  const minutehand = document.querySelector(".minute");
+  const hourhand = document.querySelector(".hour");
+  const background = document.querySelector(".body");
+  const hands = document.querySelectorAll(".hand")
+
+  const color1=[
+	"#000000",
+	"#151515",
+	"#2A2A2A",
+	"#3F3F3F",
+	"#555555",
+	"#6A6A6A",
+	"#7F7F7F",
+	"#959595",
+	"#AAAAAA",
+	"#BFBFBF",
+	"#D4D4D4",
+	"#EAEAEA",
+	"#FFFFFF",
+	"#EAEAEA",
+	"#D4D4D4", 
+	"#BFBFBF",
+	"#AAAAAA",
+	"#959595",
+	"red",
+	// "#7F7F7F", 
+	"#6A6A6A",
+    "red",
+	// "#555555",
+	"#3F3F3F",
+	"#2A2A2A",
+	"#151515", 
+  ]
+  const color2 =[
+	"#EAEAEA",
+	"#D4D4D4",
+	"#BFBFBF",
+	"#AAAAAA",
+	"#959595",
+	"#7F7F7F", 
+	"#6A6A6A",
+	"#555555",
+	"#3F3F3F",
+	"#2A2A2A",
+	"#151515",
+	"#000000",
+	"#151515",
+	"#2A2A2A",
+	"#3F3F3F",
+	"#555555",
+	"#6A6A6A",
+	"#7F7F7F",
+	"#959595",
+	"#AAAAAA",
+	"#BFBFBF",
+	"#D4D4D4",
+	"#EAEAEA",
+	"#FFFFFF",
+  ]
+
+  function tick() {
+    const seconds = new Date().getSeconds(); 
+    secondhand.style.transform = `rotate(${seconds * 6}deg)`;
+
+
+    const minutes = new Date().getMinutes(); 
+    minutehand.style.transform = `rotate(${minutes * 6}deg)`;
+
+    const hours = new Date().getHours(); 
+	hourhand.style.transform = `rotate(${hours * 30}deg)`;
+
+	hands.forEach(hand => {
+   		hand.style.background = `linear-gradient(to top, rgba(247, 240, 139, 0) 50%, ${color2[hours]}`;
+	});
+
+    
+
+	document.body.style.backgroundColor=color1[hours];
+
+	document.getElementById("clock").style.color=color2[hours];
+
+    document.getElementById("container").style.backgroundColor=color2[hours];
+
+    document.getElementById("divider").style.backgroundColor=color1[hours];
+
+	const currentTime = hours + ":" + minutes + ":" + seconds
+
+	document.getElementById("clock").textContent=currentTime
+
+	// document.body.style.transitionDelay = "3600s";
+  }
+
+  tick();
+  setInterval(tick, 1000);
+  
+
+  console.log(new Date().getSeconds())
+  console.log(new Date().getMinutes())
+  console.log(new Date().getHours())
+  
+</script>
+</script>
+</body>
+</html>
