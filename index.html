@@ -10,7 +10,7 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			transition: background-color 3600s ;
+			transition: background-color 6s ;
 
 		}
 		.container {
@@ -88,6 +88,35 @@
 	"red",
 	// "#7F7F7F", 
 	"#6A6A6A",
+    "red",
+	"#555555",
+	"#3F3F3F",
+	"#2A2A2A",
+	"#151515", 
+    
+
+    	"red",
+	"yellow",
+	"green",
+	"blue",
+	"purple",
+	"pink",
+	"hotpink",
+	"white",
+	"black",
+	"rose",
+	"grainsboro",
+	"#EAEAEA",
+	"#FFFFFF",
+	"#EAEAEA",
+	"#D4D4D4", 
+	"#BFBFBF",
+	"#AAAAAA",
+	"#959595",
+	"red",
+	// "#7F7F7F", 
+	"#6A6A6A",
+    "red",
 	"#555555",
 	"#3F3F3F",
 	"#2A2A2A",
@@ -131,7 +160,7 @@
     const hours = new Date().getHours(); 
 	// hourhand.style.transform = `rotate(${hours * 30}deg)`;
 
-	document.body.style.backgroundColor=backgroundcolors[hours];
+	document.body.style.backgroundColor=backgroundcolors[minutes];
 	document.getElementById("clock").style.color=textcolors[hours];
 
 
@@ -139,7 +168,10 @@
 	document.getElementById("clock").textContent=currentTime
 
 
-	document.body.style.transitionDelay = "3600s";
+	// document.body.style.transitionDelay = "3600s";
+    // setTimeout(() => {
+    //     window.location.reload();
+    // }, 1);
   }
 
   tick();
