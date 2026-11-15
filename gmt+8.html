@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>EST/UTC-5</title>
+	<title>GMT+8</title>
 	<style>
 		body {
 			min-height: 100vh;
@@ -16,7 +16,6 @@
 			width: auto;
             aspect-ratio: 1/1;
 			height: 125px;
-			background-color: red;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -24,14 +23,11 @@
 			border-radius: 50%;
 		}
 		.hand{
-            z-index: -2;
 			width: 2px;
-			background-color: red;
 			position: absolute;
-			background: linear-gradient(to top, rgb(247, 240, 139, 0) 50%, rgb(5, 71, 240) 50%);
 		}
 		.second {
-			height: 90vh;
+			height: 80vh;
 		}
 		.minute {
 			height: 70vh;
@@ -48,7 +44,6 @@
 			width: auto;
             aspect-ratio: 1/1;
 			height: 50vh;
-			background-color: red;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -56,9 +51,10 @@
 			border-radius: 50%;
             z-index: 1;
 		}
-        .clock{
-            color: red;
-            z-index: 3;
+        .clock:hover{
+			transition: transform 0.3s ease;
+			transform: scale(1.2);
+
         }
 	</style>
 </head>
@@ -85,7 +81,7 @@
   const minutehand = document.querySelector(".minute");
   const hourhand = document.querySelector(".hour");
   const background = document.querySelector(".body");
-  const hands = document.querySelector(".hand")
+  const hands = document.querySelectorAll(".hand")
 
   const color1=[
 	"#000000",
@@ -116,6 +112,11 @@
 	"#151515", 
   ]
   const color2 =[
+	"#EAEAEA",
+	"#D4D4D4",
+	"#BFBFBF",
+	"#AAAAAA",
+	"#959595",
 	"#7F7F7F", 
 	"#6A6A6A",
 	"#555555",
@@ -135,20 +136,26 @@
 	"#D4D4D4",
 	"#EAEAEA",
 	"#FFFFFF",
-	"#EAEAEA",
-	"#D4D4D4", 
-	"#BFBFBF",
-	"#AAAAAA",
-	"#959595",
   ]
 
   function tick() {
     const seconds = new Date().getSeconds(); 
     secondhand.style.transform = `rotate(${seconds * 6}deg)`;
+
+
     const minutes = new Date().getMinutes(); 
     minutehand.style.transform = `rotate(${minutes * 6}deg)`;
-    const hours = new Date().getHours(); 
+
+    const ahour = new Date().getHours(); 
+	const hours = ahour -13
 	hourhand.style.transform = `rotate(${hours * 30}deg)`;
+	hourhand.style.transform = `rotate(${hours * 30}deg)`;
+
+	hands.forEach(hand => {
+   		hand.style.background = `linear-gradient(to top, rgba(247, 240, 139, 0) 50%, ${color2[hours]}`;
+	});
+
+    
 
 	document.body.style.backgroundColor=color1[hours];
 
@@ -157,9 +164,6 @@
     document.getElementById("container").style.backgroundColor=color2[hours];
 
     document.getElementById("divider").style.backgroundColor=color1[hours];
-
-    hands.style.backgroundColor=color1[hours];
-
 
 	const currentTime = hours + ":" + minutes + ":" + seconds
 
