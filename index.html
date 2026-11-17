@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>GMT+8</title>
+	<title>EST/UTC-5</title>
 	<style>
 		body {
 			min-height: 100vh;
@@ -102,11 +102,9 @@
 	"#BFBFBF",
 	"#AAAAAA",
 	"#959595",
-	"red",
-	// "#7F7F7F", 
+	"#7F7F7F", 
 	"#6A6A6A",
-    "red",
-	// "#555555",
+	"#555555",
 	"#3F3F3F",
 	"#2A2A2A",
 	"#151515", 
@@ -146,16 +144,13 @@
     const minutes = new Date().getMinutes(); 
     minutehand.style.transform = `rotate(${minutes * 6}deg)`;
 
-    const ahour = new Date().getHours(); 
-	const hours = ahour -13
-	hourhand.style.transform = `rotate(${hours * 30}deg)`;
+    const hours = new Date().getHours(); 
 	hourhand.style.transform = `rotate(${hours * 30}deg)`;
 
 	hands.forEach(hand => {
    		hand.style.background = `linear-gradient(to top, rgba(247, 240, 139, 0) 50%, ${color2[hours]}`;
 	});
 
-    
 
 	document.body.style.backgroundColor=color1[hours];
 
@@ -170,6 +165,8 @@
 	document.getElementById("clock").textContent=currentTime
 
 	// document.body.style.transitionDelay = "3600s";
+
+	
   }
 
   tick();
@@ -180,7 +177,6 @@
   console.log(new Date().getMinutes())
   console.log(new Date().getHours())
   
-</script>
 </script>
 </body>
 </html>
