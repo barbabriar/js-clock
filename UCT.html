@@ -103,11 +103,9 @@
 	"#BFBFBF",
 	"#AAAAAA",
 	"#959595",
-	"red",
-	// "#7F7F7F", 
+	"#7F7F7F", 
 	"#6A6A6A",
-    "red",
-	// "#555555",
+	"#555555",
 	"#3F3F3F",
 	"#2A2A2A",
 	"#151515", 
@@ -148,14 +146,12 @@
     minutehand.style.transform = `rotate(${minutes * 6}deg)`;
 
     const ahour = new Date().getHours(); 
-	const hours = ahour -19
+	const hours = ahour +5
 	hourhand.style.transform = `rotate(${hours * 30}deg)`;
 
 	hands.forEach(hand => {
    		hand.style.background = `linear-gradient(to top, rgba(247, 240, 139, 0) 50%, ${color2[hours]}`;
 	});
-
-    
 
 	document.body.style.backgroundColor=color1[hours];
 
